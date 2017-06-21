@@ -44,6 +44,8 @@ def process_url_file(inputurlfile):
 #function to download bacterial sequences
 def download_bacterial_genomes(outfile='outfile.txt'):
     assembly_summary_file=r'ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt'
+    if os.path.exists('assembly_summary.txt'):
+       os.remove('assembly_summary.txt')
     #Download the file using wget sysyem call
     subprocess.call("wget "+assembly_summary_file, shell=True)
     #Reformat the file to pandas-friendly format
@@ -66,6 +68,8 @@ def download_bacterial_genomes(outfile='outfile.txt'):
 #this function downloads latest version human reference genome by default 
 def download_refseq_genome(taxid=9606,outfile='refseq_genome.txt'):
     assembly_summary_file="ftp://ftp.ncbi.nih.gov/genomes/refseq/assembly_summary_refseq.txt"
+    if os.path.exists('assembly_summary_refseq.txt'):
+        os.remove('assembly_summary_refseq.txt')
     #Download the file using wget sysyem call
     subprocess.call("wget "+assembly_summary_file, shell=True)
     #Reformat the file to pandas-friendly format
@@ -75,7 +79,9 @@ def download_refseq_genome(taxid=9606,outfile='refseq_genome.txt'):
     #Use read_table if the column separator is tab
     assembly_sum = pd.read_table('assembly_summary_refseq.txt')
     my_df=assembly_sum[(assembly_sum['taxid'] == taxid) &
-                       (assembly_sum['refseq_category'] == 'reference genome')]
+                       ((assembly_sum['refseq_category'] == 'reference genome') |
+                        (assembly_sum['refseq_category'] == 'representative genome')
+                       )]
     my_df=my_df[['ftp_path','assembly_accession','asm_name']]
     #Process the newly created file and download genomes from NCBI website
     my_df.to_csv(outfile,mode='w',index=False,header=None)
@@ -109,6 +115,12 @@ print('Downloading human genome'+'\n')
 download_refseq_genome(9606,'human_genome_url.txt')
 print('Converting sequences to kraken input format'+'\n')
 get_fasta_in_kraken_format('human_genome.fa')
+
+#print('Downloading rat genome'+'\n')
+#download_refseq_genome(10116,'rat_genome_url.txt')
+#print('Converting sequences to kraken input format'+'\n')
+#get_fasta_in_kraken_format('rat_genome.fa')
+
 print('Downloading bacterial genomes'+'\n')
 download_bacterial_genomes('bacterial_complete_genome_url.txt')
 print('Converting sequences to kraken input format'+'\n')
