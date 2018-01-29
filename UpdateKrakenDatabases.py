@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-
+This script takes an optional command-line argument which can be specified as the target location where the data should be downloaded and saved. 
+By default, all files are downloaded in the present working directory. 
 @author: sejalmodha
 """
 #import OS module to use os methods and functions
