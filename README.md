@@ -13,3 +13,5 @@ This script requires following packages.
 - pyfaidx (https://github.com/mdshw5/pyfaidx)
 - pymummer (https://github.com/sanger-pathogens/pymummer)
 - mummer3 (http://mummer.sourceforge.net/)
+
+`usage: reorderHCMVContig.py [-h] -q QUERY -r REFERENCE -c COORDINATES -i MINIDENTITY -o OUTPUT [-n HEADER]`
