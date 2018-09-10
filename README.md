@@ -13,8 +13,8 @@ This script requires following packages.
 - pyfaidx (https://github.com/mdshw5/pyfaidx)
 - pymummer (https://github.com/sanger-pathogens/pymummer)
 - mummer3 (http://mummer.sourceforge.net/)
-
-`usage: reorderHCMVContig.py [-h] -q QUERY -r REFERENCE -c COORDINATES -i
+```
+usage: reorderHCMVContig.py [-h] -q QUERY -r REFERENCE -c COORDINATES -i
                             MINIDENTITY -o OUTPUT [-n HEADER]
 
 This script runs mummer using python
@@ -32,4 +32,5 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         Output file in fasta format
   -n HEADER, --header HEADER
-                        Header name for output fasta format`
+                        Header name for output fasta format
+```
