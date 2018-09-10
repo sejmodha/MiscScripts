@@ -12,3 +12,4 @@ This script requires following packages.
 - BioPython (Seq and SeqIO)
 - pyfaidx (https://github.com/mdshw5/pyfaidx)
 - pymummer (https://github.com/sanger-pathogens/pymummer)
+- mummer3 (http://mummer.sourceforge.net/)
