@@ -6,6 +6,8 @@ This script requires following packages.
 - BioPython
 - Pandas
 
+Output: The default name for the output database is HumanVirusBacteria.
+
 ### reorderHCMVContig.py
 This script requires following packages.
 - Python 3.0 or higher
