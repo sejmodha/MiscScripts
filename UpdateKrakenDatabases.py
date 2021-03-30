@@ -78,7 +78,7 @@ def download_refseq_genome(taxid=9606,outfile='refseq_genome.txt'):
     subprocess.call("sed -i 's/^# //' assembly_summary_refseq.txt", shell=True)
     #Read the file as a dataframe - using read_table
     #Use read_table if the column separator is tab
-    assembly_sum = pd.read_table('assembly_summary_refseq.txt',dtype='unicode')
+    assembly_sum = pd.read_csv('assembly_summary_refseq.txt', sep='\t', dtype='unicode')
     my_df=assembly_sum[(assembly_sum['taxid'] == taxid) &
                        ((assembly_sum['refseq_category'] == 'reference genome') |
                         (assembly_sum['refseq_category'] == 'representative genome')
